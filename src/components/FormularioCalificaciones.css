@@ -1,0 +1,177 @@
+.form-calificacion-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 35px;
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.form-titulo {
+  color: #0b1938;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.form-subtitulo {
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Estrellas interactiva */
+.estrellas-contenedor {
+  display: flex;
+  justify-content: space-between;
+  max-width: 480px;
+  margin: 0 auto 30px auto;
+}
+
+.estrella-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.estrella-btn {
+  background: none;
+  border: none;
+  font-size: 42px;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: transform 0.1s, color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.estrella-btn.activa {
+  color: #0b1938;
+}
+
+.estrella-btn:hover {
+  transform: scale(1.15);
+  color: #0b1938;
+}
+
+.estrella-etiqueta {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* Campos de entrada */
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0b1938;
+}
+
+.form-group textarea {
+  padding: 12px 14px;
+  border: 2px solid #8b5cf6;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+}
+
+.form-group select,
+.form-group input {
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background-color: #fff;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #0b1938;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Botones y mensajes */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.btn-enviar {
+  background-color: #0b1938;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.2s;
+}
+
+.btn-enviar:hover:not(:disabled) {
+  background-color: #1e3a8a;
+}
+
+.btn-enviar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mensaje-exito {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+  border: 1px solid #ceebd6;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .form-actions {
+    flex-direction: column;
+  }
+  .btn-enviar, .mensaje-exito {
+    width: 100%;
+  }
+}
