@@ -1,0 +1,117 @@
+/* Header de Calificación */
+.rating-header {
+  margin-bottom: 24px;
+}
+
+.rating-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy-bg);
+}
+
+.star-title-icon {
+  font-size: 1.4rem;
+  color: var(--navy-bg);
+}
+
+.rating-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Sección de Estrellas */
+.stars-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.stars-row {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.star-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.star-icon {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.star-icon:hover {
+  transform: scale(1.15);
+}
+
+.star-label {
+  position: absolute;
+  top: 48px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Formulario */
+.rating-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%206b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+/* Pie del formulario (Botón + Mensaje de agradecimiento) */
+.rating-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.success-badge {
+  background-color: #e6f4ea;
+  color: #137333;
+  border: 1px solid #ceead6;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .stars-row {
+    gap: 14px;
+  }
+  
+  .star-icon {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .rating-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
