@@ -1,0 +1,92 @@
+/* Header del formulario */
+.feedback-header {
+  margin-bottom: 20px;
+}
+
+.feedback-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy-bg);
+}
+
+.feedback-title .sparkle {
+  color: var(--navy-bg);
+  font-size: 1.4rem;
+}
+
+.feedback-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.feedback-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Selector tipo pill (Comentario / Sugerencia) */
+.toggle-group {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: 1px solid #cbd5e1;
+  background-color: var(--white);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  border-color: var(--navy-bg);
+}
+
+.toggle-btn.active {
+  background-color: var(--light-blue-card);
+  border-color: var(--navy-bg);
+  color: var(--navy-bg);
+  font-weight: 700;
+}
+
+.radio-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Pie del formulario */
+.feedback-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.thanks-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+  .feedback-footer {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}

@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import ObjetosPerdidos from "./components/ObjetosPerdidos"; 
+import Comentarios from "./components/Comentarios";
+import Calificacion from "./components/Calificacion";
+import Footer from "./components/Footer";
+import Tarifas from "./components/Tarifas";
+import Ayuda from "./components/Ayuda";
+import MapaRuta from './components/MapaRuta';
 import './App.css';
 
-// SVG Icons para asegurar funcionamiento sin librerías externas
+// --- Íconos SVG ---
 const IconInicio = () => (
   <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -46,6 +53,12 @@ const IconObjetos = () => (
   </svg>
 );
 
+const IconComentarios = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+  </svg>
+);
+
 const IconBuscar = () => (
   <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <circle cx="11" cy="11" r="8" />
@@ -53,7 +66,7 @@ const IconBuscar = () => (
   </svg>
 );
 
-export default function Inicio() {
+export default function App() {
   const [activeTab, setActiveTab] = useState('inicio');
 
   return (
@@ -62,51 +75,58 @@ export default function Inicio() {
         {/* Barra superior de navegación */}
         <header className="navbar">
           <div className="nav-brand">CHAPUL-GO</div>
-          
+
           <nav className="nav-menu">
-            <button 
+            <button
               className={`nav-item ${activeTab === 'inicio' ? 'active' : ''}`}
               onClick={() => setActiveTab('inicio')}
             >
               <IconInicio />
               <span>Inicio</span>
             </button>
-            <button 
+            <button
               className={`nav-item ${activeTab === 'tarifas' ? 'active' : ''}`}
               onClick={() => setActiveTab('tarifas')}
             >
               <IconTarifas />
               <span>Tarifas</span>
             </button>
-            <button 
+            <button
               className={`nav-item ${activeTab === 'rutas' ? 'active' : ''}`}
               onClick={() => setActiveTab('rutas')}
             >
               <IconRutas />
               <span>Rutas</span>
             </button>
-            <button 
+            <button
               className={`nav-item ${activeTab === 'horarios' ? 'active' : ''}`}
               onClick={() => setActiveTab('horarios')}
             >
               <IconHorarios />
               <span>Horarios</span>
             </button>
-            <button 
+            <button
               className={`nav-item ${activeTab === 'ayuda' ? 'active' : ''}`}
               onClick={() => setActiveTab('ayuda')}
             >
               <IconAyuda />
               <span>Ayuda</span>
             </button>
-            <button 
+            <button
               className={`nav-item ${activeTab === 'calificacion' ? 'active' : ''}`}
               onClick={() => setActiveTab('calificacion')}
             >
               <IconCalificacion />
               <span>Calificación</span>
             </button>
-            <button 
+            <button
+              className={`nav-item ${activeTab === 'comentarios' ? 'active' : ''}`}
+              onClick={() => setActiveTab('comentarios')}
+            >
+              <IconComentarios />
+              <span>Comentarios</span>
+            </button>
+            <button
               className={`nav-item ${activeTab === 'objetos' ? 'active' : ''}`}
               onClick={() => setActiveTab('objetos')}
             >
@@ -120,77 +140,90 @@ export default function Inicio() {
           </div>
         </header>
 
-        {/* Contenido Principal */}
-        <main className="content-container">
-          {/* Banner Hero */}
-          <section className="hero-card">
-            <div className="hero-text">
-              <h1 className="hero-title">CHAPUL-GO</h1>
-              <h2 className="hero-subtitle">Movilidad clara, segura y cercana</h2>
-              <p className="hero-description">
-                Encuentra tu ruta y llega más fácil a tu destino.
-              </p>
-            </div>
+        {/* --- CONTENIDO DINÁMICO --- */}
 
-            <div className="hero-search-container">
-              <div className="search-input-wrapper">
-                <IconBuscar />
-                <input 
-                  type="text" 
-                  placeholder="Buscar ruta o parada" 
-                  className="search-input"
-                />
+        {/* 1. Vista de Inicio */}
+        {activeTab === 'inicio' && (
+          <main className="content-container">
+            <section className="hero-card">
+              <div className="hero-text">
+                <h1 className="hero-title">CHAPUL-GO</h1>
+                <h2 className="hero-subtitle">Movilidad clara, segura y cercana</h2>
+                <p className="hero-description">
+                  Encuentra tu ruta y llega más fácil a tu destino.
+                </p>
               </div>
-              <button className="btn-search">Buscar ruta</button>
-            </div>
-          </section>
 
-          {/* Tarjetas de Accesos Rápidos */}
-          <section className="grid-cards">
-            <div className="access-card">
-              <div className="card-icon"><IconTarifas /></div>
-              <h3 className="card-title">Tarifas</h3>
-              <p className="card-sub">Consulta precios</p>
-            </div>
+              <div className="hero-search-container">
+                <div className="search-input-wrapper">
+                  <IconBuscar />
+                  <input
+                    type="text"
+                    placeholder="Buscar ruta o parada"
+                    className="search-input"
+                  />
+                </div>
+                <button className="btn-search" onClick={() => setActiveTab('rutas')}>Buscar ruta</button>
+              </div>
+            </section>
 
-            <div className="access-card">
-              <div className="card-icon"><IconRutas /></div>
-              <h3 className="card-title">Rutas</h3>
-              <p className="card-sub">Explora el mapa</p>
-            </div>
+            <section className="grid-cards">
+              <div className="access-card" onClick={() => setActiveTab('tarifas')}>
+                <div className="card-icon"><IconTarifas /></div>
+                <h3 className="card-title">Tarifas</h3>
+                <p className="card-sub">Consulta precios</p>
+              </div>
 
-            <div className="access-card">
-              <div className="card-icon"><IconHorarios /></div>
-              <h3 className="card-title">Horarios</h3>
-              <p className="card-sub">Mira salidas</p>
-            </div>
+              <div className="access-card" onClick={() => setActiveTab('rutas')}>
+                <div className="card-icon"><IconRutas /></div>
+                <h3 className="card-title">Rutas</h3>
+                <p className="card-sub">Explora el mapa</p>
+              </div>
 
-            <div className="access-card">
-              <div className="card-icon"><IconAyuda /></div>
-              <h3 className="card-title">Ayuda</h3>
-              <p className="card-sub">Resuelve dudas</p>
-            </div>
-          </section>
+              <div className="access-card" onClick={() => setActiveTab('horarios')}>
+                <div className="card-icon"><IconHorarios /></div>
+                <h3 className="card-title">Horarios</h3>
+                <p className="card-sub">Mira salidas</p>
+              </div>
 
-          {/* Widget de Próximo Servicio */}
-          <section className="status-bar">
-            <div className="status-label">
-              <span className="status-dot">•</span> Próximo servicio
+              <div className="access-card" onClick={() => setActiveTab('ayuda')}>
+                <div className="card-icon"><IconAyuda /></div>
+                <h3 className="card-title">Ayuda</h3>
+                <p className="card-sub">Resuelve dudas</p>
+              </div>
+            </section>
+
+            <section className="status-bar">
+              <div className="status-label">
+                <span className="status-dot">•</span> Próximo servicio
+              </div>
+              <div className="status-route">El Rayo — Chapulhuacán</div>
+              <div className="status-time">08:35</div>
+              <div className="status-eta">En 08 min</div>
+              <a href="#detalles" className="status-link">Ver detalles →</a>
+            </section>
+          </main>
+        )}
+
+        {/* 2. Pantallas Conectadas */}
+        {activeTab === 'rutas' && <MapaRuta />}
+        {activeTab === 'objetos' && <ObjetosPerdidos />}
+        {activeTab === 'comentarios' && <Comentarios />}
+        {activeTab === 'calificacion' && <Calificacion />}
+        {activeTab === 'tarifas' && <Tarifas />}
+        {activeTab === 'ayuda' && <Ayuda />}
+
+        {/* 3. Vistas provisionales únicamente para pestañas sin componente creado */}
+        {!['inicio', 'rutas', 'objetos', 'comentarios', 'calificacion', 'tarifas', 'ayuda'].includes(activeTab) && (
+          <main className="content-container">
+            <div style={{ textAlign: 'center', padding: '40px 0', color: 'var(--navy-bg)' }}>
+              <h2>Sección {activeTab.toUpperCase()} en construcción</h2>
             </div>
-            <div className="status-route">
-              El Rayo — Chapulhuacán
-            </div>
-            <div className="status-time">
-              08:35
-            </div>
-            <div className="status-eta">
-              En 08 min
-            </div>
-            <a href="#detalles" className="status-link">
-              Ver detalles →
-            </a>
-          </section>
-        </main>
+          </main>
+        )}
+
+        {/* 4. Footer global */}
+        <Footer setActiveTab={setActiveTab} />
       </div>
     </div>
   );
