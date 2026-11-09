@@ -5,6 +5,7 @@ import Calificacion from "./components/Calificacion";
 import Footer from "./components/Footer";
 import Tarifas from "./components/Tarifas";
 import Ayuda from "./components/Ayuda";
+import MapaRuta from './components/MapaRuta';
 import './App.css';
 
 // --- Íconos SVG ---
@@ -162,7 +163,7 @@ export default function App() {
                     className="search-input"
                   />
                 </div>
-                <button className="btn-search">Buscar ruta</button>
+                <button className="btn-search" onClick={() => setActiveTab('rutas')}>Buscar ruta</button>
               </div>
             </section>
 
@@ -205,22 +206,23 @@ export default function App() {
         )}
 
         {/* 2. Pantallas Conectadas */}
+        {activeTab === 'rutas' && <MapaRuta />}
         {activeTab === 'objetos' && <ObjetosPerdidos />}
         {activeTab === 'comentarios' && <Comentarios />}
         {activeTab === 'calificacion' && <Calificacion />}
         {activeTab === 'tarifas' && <Tarifas />}
         {activeTab === 'ayuda' && <Ayuda />}
 
-        {/* 3. Vistas provisionales para otras pestañas (Tarifas, Rutas, Horarios, Ayuda) */}
-        {!['inicio', 'objetos', 'comentarios', 'calificacion'].includes(activeTab) && (
+        {/* 3. Vistas provisionales únicamente para pestañas sin componente creado */}
+        {!['inicio', 'rutas', 'objetos', 'comentarios', 'calificacion', 'tarifas', 'ayuda'].includes(activeTab) && (
           <main className="content-container">
             <div style={{ textAlign: 'center', padding: '40px 0', color: 'var(--navy-bg)' }}>
               <h2>Sección {activeTab.toUpperCase()} en construcción</h2>
             </div>
-            
           </main>
         )}
-        {/* 2. Insertar el Footer aquí para todas las vistas */}
+
+        {/* 4. Footer global */}
         <Footer setActiveTab={setActiveTab} />
       </div>
     </div>
