@@ -1,4 +1,4 @@
-/* --- Variables de Color de la Interfaz --- */
+/* --- Variables de Color (Exactamente las originales) --- */
 :root {
   --navy-bg: #0b1736;
   --navy-dark: #081026;
@@ -11,28 +11,32 @@
   --white: #ffffff;
 }
 
+/* Selector universal corregido (se cambió '-' por '*') */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app-viewport {
   background-color: #f1f5f9;
   min-height: 100vh;
-  padding: 20px;
+  padding: 32px 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .browser-mockup {
   width: 100%;
   max-width: 960px;
   background-color: var(--white);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 30px -10px rgba(13, 27, 62, 0.08), 0 10px 15px -5px rgba(13, 27, 62, 0.04);
   border: 1px solid #e2e8f0;
 }
 
@@ -42,15 +46,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 24px;
+  padding: 14px 28px;
   color: var(--white);
-  gap: 12px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-brand {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.02em;
 }
 
 .nav-menu {
@@ -67,23 +72,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6px 14px;
-  border-radius: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   gap: 4px;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-item:hover {
   color: var(--white);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .nav-item.active {
   background-color: var(--white);
   color: var(--navy-bg);
   font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .location-pill {
@@ -96,6 +103,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .location-pill .dot {
@@ -105,22 +113,23 @@
 
 /* --- Contenedor Principal --- */
 .content-container {
-  padding: 32px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
 /* --- Banner Hero --- */
 .hero-card {
   background-color: var(--navy-bg);
   border-radius: 16px;
-  padding: 36px 40px;
+  padding: 40px 44px;
   color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  box-shadow: 0 12px 24px -6px rgba(11, 23, 54, 0.15);
 }
 
 .hero-text {
@@ -128,30 +137,31 @@
 }
 
 .hero-title {
-  font-size: 3.2rem;
-  font-weight: 900;
-  letter-spacing: 0.5px;
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1.1;
-  margin-bottom: 6px;
-  color:#edf2f7
+  margin-bottom: 8px;
+  color: #edf2f7;
 }
 
 .hero-subtitle {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
   color: #f8fafc;
 }
 
 .hero-description {
   font-size: 0.88rem;
+  line-height: 1.5;
   color: var(--text-light-muted);
 }
 
 .hero-search-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   width: 100%;
   max-width: 300px;
 }
@@ -164,6 +174,12 @@
   padding: 10px 14px;
   gap: 10px;
   color: var(--text-muted);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.search-input-wrapper:focus-within {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .search-input {
@@ -183,15 +199,16 @@
   color: var(--navy-bg);
   border: none;
   border-radius: 8px;
-  padding: 10px;
+  padding: 12px;
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-search:hover {
   background-color: #cbe0fd;
+  transform: translateY(-1px);
 }
 
 /* --- Grid de Accesos Rápido --- */
@@ -204,18 +221,18 @@
 .access-card {
   background-color: var(--light-blue-card);
   border-radius: 12px;
-  padding: 20px;
+  padding: 22px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .access-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(13, 27, 62, 0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(13, 27, 62, 0.08);
 }
 
 .card-icon {
@@ -224,20 +241,22 @@
 }
 
 .card-title {
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--navy-bg);
 }
 
 .card-sub {
   font-size: 0.75rem;
+  line-height: 1.4;
   color: var(--text-muted);
 }
 
 /* --- Bar de Estado / Próximo Servicio --- */
 .status-bar {
   border-top: 1px solid #edf2f7;
-  padding-top: 20px;
+  padding-top: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -246,15 +265,21 @@
 
 .status-label {
   color: var(--text-dark);
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .status-dot {
   color: var(--green-accent);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
 }
 
 .status-route {
@@ -264,8 +289,9 @@
 
 .status-time {
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--navy-bg);
+  letter-spacing: -0.01em;
 }
 
 .status-eta {
@@ -278,17 +304,26 @@
   font-weight: 700;
   text-decoration: none;
   font-size: 0.8rem;
+  transition: opacity 0.2s ease;
 }
 
 .status-link:hover {
   text-decoration: underline;
+  opacity: 0.85;
 }
 
 /* --- Responsive Layout --- */
 @media (max-width: 768px) {
+  .content-container {
+    padding: 24px 18px;
+  }
   .hero-card {
     flex-direction: column;
     align-items: flex-start;
+    padding: 32px 24px;
+  }
+  .hero-title {
+    font-size: 2.2rem;
   }
   .hero-search-container {
     max-width: 100%;
@@ -299,9 +334,10 @@
   .status-bar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
   }
   .navbar {
     flex-wrap: wrap;
+    padding: 14px 18px;
   }
 }
