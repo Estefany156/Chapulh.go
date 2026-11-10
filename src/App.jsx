@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
 // SVG Icons para asegurar funcionamiento sin librerías externas
 const IconInicio = () => (
   <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
