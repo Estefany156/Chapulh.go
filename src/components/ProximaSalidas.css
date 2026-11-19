@@ -1,0 +1,471 @@
+.ps-wrapper,
+.ps-wrapper *,
+.ps-wrapper *::before,
+.ps-wrapper *::after {
+  box-sizing: border-box;
+}
+
+.ps-wrapper {
+  width: 100%;
+  max-width: 720px;
+  margin: 28px auto 40px;
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  color: #0f1b3d;
+}
+
+/* Encabezado superior */
+.ps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: -4px;
+}
+
+.ps-eyebrow {
+  display: none;
+}
+
+.ps-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f1b3d;
+  letter-spacing: -0.01em;
+}
+
+/* Tarjeta principal destacada (mismo estilo que .card) */
+.ps-featured-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #d5dce6;
+  border-radius: 18px;
+  padding: 28px 32px;
+}
+
+.ps-featured-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.ps-route-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f1b3d;
+}
+
+.ps-route-arrow {
+  color: #475569;
+  font-weight: 600;
+}
+
+/* Botón actualizar con el estilo de los controles #e3eefc */
+.ps-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  background-color: #e3eefc;
+  border: none;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f1b3d;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.ps-refresh-btn:hover {
+  background-color: #d7e6fa;
+}
+
+.ps-refresh-icon {
+  width: 14px;
+  height: 14px;
+  color: #0f1b3d;
+}
+
+.ps-refresh-icon.ps-spin {
+  animation: psSpin 0.6s linear infinite;
+}
+
+@keyframes psSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bloque central de hora y etiquetas */
+.ps-featured-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.ps-time-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #162242;
+  margin-bottom: 6px;
+}
+
+.ps-time-value {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  color: #0f1b3d;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.ps-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Pastilla oscura igual a .btn-aplicar */
+.ps-eta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  background-color: #0e1b3d;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 22px;
+  border-radius: 8px;
+}
+
+.ps-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4ade80;
+}
+
+/* Pastilla azul claro igual a .filter-control */
+.ps-unit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  background-color: #e3eefc;
+  color: #0f1b3d;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0 20px;
+  border-radius: 8px;
+}
+
+.ps-bus-icon {
+  width: 16px;
+  height: 16px;
+  color: #0f1b3d;
+}
+
+/* Barra de progreso con estilo de fila seleccionada (#e5effc) */
+.ps-progress-box {
+  background-color: #f8fafd;
+  border: 1px solid #d5dce6;
+  border-radius: 12px;
+  padding: 18px 22px;
+}
+
+.ps-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #162242;
+  margin-bottom: 12px;
+}
+
+/* Badge verde idéntico a .status-ontime ("• A tiempo") */
+.ps-status-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 120px;
+  height: 28px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background-color: #dcf0e1;
+  color: #2f7a47;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.ps-status-text::before {
+  content: '•';
+  font-size: 15px;
+  line-height: 1;
+}
+
+.ps-progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: #e3eefc;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.ps-progress-fill {
+  height: 100%;
+  background-color: #0e1b3d;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.ps-progress-endpoints {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.ps-endpoint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ps-endpoint-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #94a3b8;
+  background-color: #ffffff;
+}
+
+.ps-endpoint-dot.active {
+  border-color: #0f1b3d;
+  background-color: #0f1b3d;
+}
+
+/* Tarjeta inferior: Siguientes salidas (mismo estilo que .card) */
+.ps-next-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #d5dce6;
+  border-radius: 18px;
+  padding: 28px 32px;
+}
+
+.ps-next-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ps-next-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f1b3d;
+  letter-spacing: -0.01em;
+}
+
+.ps-next-subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Fecha con el estilo de los inputs (.filter-control) */
+.ps-today-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  background-color: #e3eefc;
+  border-radius: 8px;
+  padding: 0 16px;
+}
+
+.ps-today-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f1b3d;
+}
+
+/* Lista de salidas idéntica a .salidas-list y .salida-item */
+.ps-next-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ps-next-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border: 1px solid #d5dce6;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+/* Efecto hover idéntico a .salida-item.selected de la captura */
+.ps-next-row:hover {
+  background-color: #e5effc;
+  border-color: #0f1b3d;
+}
+
+.ps-next-time-box {
+  min-width: 120px;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.ps-next-time {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f1b3d;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Alineación horizontal en columnas como en "Salidas disponibles" */
+.ps-next-route-info {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 48px;
+}
+
+.ps-next-route {
+  flex: 1;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.ps-next-unit {
+  min-width: 90px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f1b3d;
+}
+
+/* Badge tipo píldora igual a .status-badge (140px x 28px) */
+.ps-next-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 140px;
+  height: 28px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  background-color: #e3eefc;
+  color: #0f1b3d;
+}
+
+.ps-next-status::before {
+  content: '•';
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .ps-wrapper {
+    padding: 16px;
+  }
+
+  .ps-featured-card,
+  .ps-next-card {
+    padding: 20px;
+  }
+
+  .ps-time-value {
+    font-size: 44px;
+  }
+
+  .ps-next-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .ps-next-route-info {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .ps-next-route {
+    text-align: left;
+  }
+}
+.ps-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ps-back-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #cfe0f7;
+  background-color: #ffffff;
+  color: #0e1b3d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(14, 27, 61, 0.08);
+  transition: all 0.15s ease;
+}
+
+.ps-back-btn:hover {
+  background-color: #0e1b3d;
+  border-color: #0e1b3d;
+  color: #ffffff;
+  transform: translateX(-2px);
+}

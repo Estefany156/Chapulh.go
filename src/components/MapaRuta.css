@@ -1,0 +1,629 @@
+.ruta-viewport,
+.ruta-viewport *,
+.ruta-viewport *::before,
+.ruta-viewport *::after {
+  box-sizing: border-box;
+}
+
+.ruta-viewport {
+  width: 100%;
+  padding: 16px 20px 24px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+}
+
+.ruta-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 610px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 14px 34px rgba(11, 23, 54, 0.14);
+}
+
+.mapbox-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Marcadores personalizados en el mapa --- */
+.mapbox-custom-marker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mapbox-marker-badge {
+  position: absolute;
+  bottom: 50px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #0f172a;
+  padding: 5px 12px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+}
+
+.mapbox-marker-tag {
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0f172a;
+  opacity: 0.7;
+  margin-bottom: 1px;
+}
+
+.mapbox-marker-pin {
+  width: 38px;
+  height: 46px;
+  filter: drop-shadow(0 5px 8px rgba(15, 23, 42, 0.28));
+}
+
+/* --- Selector de estilo de mapa (Superior derecha) --- */
+.map-style-switcher {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+}
+
+.style-switch-btn {
+  padding: 6px 13px;
+  border-radius: 8px;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+.style-switch-btn:hover {
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.style-switch-btn.active {
+  background: #0b1736;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(11, 23, 54, 0.22);
+}
+
+/* --- Panel flotante izquierdo (Glassmorphism) --- */
+.ruta-floating-panel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  bottom: 16px;
+  z-index: 3;
+  width: 336px;
+  max-height: calc(100% - 32px);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #0f172a;
+}
+
+.panel-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.panel-eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #1d4ed8;
+  background: rgba(29, 78, 216, 0.1);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 3px;
+}
+
+.panel-heading {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0b1736;
+  letter-spacing: -0.01em;
+}
+
+.btn-reset-pill {
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  background: rgba(255, 255, 255, 0.8);
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-reset-pill:hover {
+  background: #0b1736;
+  color: #ffffff;
+  border-color: #0b1736;
+}
+
+/* --- Tarjeta de selectores conectados (Origen -> Destino) --- */
+.route-inputs-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.route-timeline-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+  padding: 4px 0;
+  flex-shrink: 0;
+}
+
+.track-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1.5px rgba(15, 23, 42, 0.15);
+}
+
+.track-origin {
+  background-color: #10b981;
+}
+
+.track-dest {
+  background-color: #ef4444;
+  border-radius: 3px;
+}
+
+.track-line {
+  width: 2px;
+  flex: 1;
+  margin: 3px 0;
+  background-image: linear-gradient(to bottom, #10b981 40%, #ef4444 100%);
+  opacity: 0.65;
+}
+
+.route-selects-stack {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.route-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.route-field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.route-select {
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: 9px;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.route-select:focus {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+}
+
+.btn-swap-route {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: #ffffff;
+  color: #0b1736;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+  transition: all 0.18s ease;
+}
+
+.btn-swap-route:hover:not(:disabled) {
+  background: #0b1736;
+  color: #ffffff;
+  transform: rotate(180deg);
+}
+
+.btn-swap-route:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* --- Pestañas segmentadas (Estilo Imagen 2) --- */
+.panel-segmented-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(15, 23, 42, 0.07);
+  padding: 3px;
+  border-radius: 11px;
+}
+
+.panel-tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.panel-tab-btn.active {
+  background: #0b1736;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(11, 23, 54, 0.18);
+}
+
+.panel-tab-badge {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+}
+
+.panel-tab-btn:not(.active) .panel-tab-badge {
+  background: rgba(15, 23, 42, 0.1);
+  color: #0f172a;
+}
+
+/* --- Lista de rutas rápidas --- */
+.quick-routes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.quick-route-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.quick-route-card:hover {
+  background: #ffffff;
+  border-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.quick-route-card.selected {
+  background: #ffffff;
+  border: 1.5px solid #0b1736;
+  box-shadow: 0 4px 12px rgba(11, 23, 54, 0.1);
+}
+
+.quick-route-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.quick-route-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0b1736;
+}
+
+.quick-route-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.quick-route-arrow {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1d4ed8;
+}
+
+/* --- Lista cronológica de paradas del tramo --- */
+.stops-timeline-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 4px;
+}
+
+.stops-timeline-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.stops-timeline-list::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 999px;
+}
+
+.stop-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.55);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.stop-item-row:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.stop-node {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stop-node.node-origin {
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+}
+
+.stop-node.node-dest {
+  background: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+.stop-node.node-mid {
+  background: #1d4ed8;
+  opacity: 0.7;
+}
+
+.stop-item-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stop-item-num {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+/* --- Barra inferior de telemetría (Estilo Imagen 2) --- */
+.route-telemetry-bar {
+  position: absolute;
+  left: 368px;
+  right: 54px;
+  bottom: 16px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 12px 18px;
+  box-shadow: 0 12px 28px rgba(11, 23, 54, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.telemetry-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #0b1736;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 6px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.telemetry-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+.telemetry-metrics {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-width: 0;
+}
+
+.telemetry-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.telemetry-cell.compact {
+  flex-shrink: 0;
+}
+
+.telemetry-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.telemetry-value {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.telemetry-cell.highlight .telemetry-value {
+  color: #1d4ed8;
+}
+
+/* --- Callout oscuro inicial (Estilo Imagen 3) --- */
+.route-callout-pill {
+  position: absolute;
+  left: 368px;
+  bottom: 18px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(11, 23, 54, 0.9);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(11, 23, 54, 0.24);
+}
+
+.callout-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+}
+
+.route-callout-pill strong {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.route-callout-pill span {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+/* --- Responsive --- */
+@media (max-width: 960px) {
+  .ruta-map-wrapper {
+    height: auto;
+    min-height: 680px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mapbox-canvas {
+    height: 440px;
+  }
+
+  .ruta-floating-panel {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    width: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .route-telemetry-bar,
+  .route-callout-pill {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+    flex-wrap: wrap;
+  }
+}

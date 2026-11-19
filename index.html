@@ -5,9 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>chapulhgo</title>
+    <link rel="stylesheet" href="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.css" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script src="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.js"></script>
+    <script>
+      fetch("https://vdk-viber-runtime-prod.bot.botpress.host/edge/bots/4603b936-6b70-4573-87ac-b63746a6c302/config")
+        .then((res) => res.json())
+        .then(({ webchat }) =>
+          VdkEdgeWebchat.mount({ ...webchat, mode: "bubble", baseUrl: "https://vdk-viber-runtime-prod.bot.botpress.host", botId: "4603b936-6b70-4573-87ac-b63746a6c302" })
+        )
+    </script>
   </body>
 </html>
