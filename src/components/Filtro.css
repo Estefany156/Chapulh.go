@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  background-color: #ffffff;
+  color: #0f1b3d;
+}
+
+.salidas-container {
+  max-width: 1140px;
+  margin: 24px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Tarjetas principales */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #d5dce6;
+  border-radius: 18px;
+  padding: 28px 32px;
+}
+
+.card-title {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f1b3d;
+  letter-spacing: -0.01em;
+}
+
+/* Sección de filtros */
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-bottom: 18px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 215px;
+}
+
+.filter-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #162242;
+}
+
+.filter-control {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  background-color: #e3eefc;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.filter-control:hover,
+.filter-control:focus {
+  background-color: #d7e6fa;
+}
+
+/* Ajuste para inputs de tipo time */
+input[type='time'].filter-control::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.btn-aplicar {
+  background-color: #0e1b3d;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 36px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-aplicar:hover {
+  background-color: #192d63;
+}
+
+/* Encabezado de resultados */
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.results-header .card-title {
+  margin-bottom: 0;
+}
+
+.results-count {
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Lista de salidas */
+.salidas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.salida-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  border: 1px solid #d5dce6;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.salida-item:hover {
+  border-color: #94a3b8;
+}
+
+.salida-item.selected {
+  background-color: #e5effc;
+  border: 1px solid #0f1b3d;
+}
+
+/* Columnas internas de cada fila */
+.salida-time-col {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 155px;
+}
+
+.clock-icon {
+  width: 16px;
+  height: 16px;
+  color: #0f1b3d;
+  flex-shrink: 0;
+}
+
+.salida-time {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f1b3d;
+  font-variant-numeric: tabular-nums;
+}
+
+.salida-code-col {
+  min-width: 90px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f1b3d;
+}
+
+.salida-route-col {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.salida-status-col {
+  margin-right: 48px;
+}
+
+/* Badges de estado */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 140px;
+  height: 28px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.status-dot {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.status-ontime {
+  background-color: #dcf0e1;
+  color: #2f7a47;
+}
+
+.status-delayed {
+  background-color: #fdead2;
+  color: #a16207;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .filter-group {
+    width: 100%;
+  }
+
+  .salida-item {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .salida-status-col {
+    margin-right: 0;
+  }
+}
